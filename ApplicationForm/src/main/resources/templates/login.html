@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<style>
+		
+	    .one {
+	        background: linear-gradient(100deg, black, cyan);
+	    }
+
+		#eye {
+		    margin-top: -170px;
+		    margin-left: 560px;
+		}
+
+	    .hide {
+	        display: none !important;
+	    }
+	</style>
+	
+	
+	
+	
+    <title>Login Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+</head>
+
+<body>
+	
+	<div th:replace="~{fragments/header :: navbar}"></div>
+	
+    <section>
+        <div id="form" class="w-50 m-auto mt-5">
+            <div class="card">
+                <div class="card-header one">
+                    <h1 class="text-center">Login Form</h1>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/app/login/home}" method="post" id="form-Ele">
+                        <input id="usn" class="form-control my-2" type="text" placeholder="Enter username" name="userName" required>
+                        <input id="pass" class="form-control" type="password" placeholder="Enter password" name="password" required>
+                        <input class="btn one my-2 " type="submit" value="Login">
+                    </form>
+                    <button id="eye" class="btn" type="button" onclick="togglePassword()">
+                        <i class="bi bi-eye-slash-fill" id="eye-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function togglePassword() {
+            const pass = document.getElementById("pass");
+            const icon = document.getElementById("eye-icon");
+            if (pass.type === "password") {
+                pass.type = "text";
+                icon.classList.remove("bi-eye-slash-fill");
+                icon.classList.add("bi-eye-fill");
+            } else {
+                pass.type = "password";
+                icon.classList.remove("bi-eye-fill");
+                icon.classList.add("bi-eye-slash-fill");
+            }
+        }
+    </script>
+</body>
+
+</html>
